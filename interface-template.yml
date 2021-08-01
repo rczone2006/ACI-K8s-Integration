@@ -1,0 +1,40 @@
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    ens160:
+      addresses:
+      - 172.25.74.178/23
+      gateway4: 172.25.74.1
+      nameservers:
+        addresses:
+        - 10.195.200.67
+        search: []
+    ens192:
+          match:
+             macaddress: 00:50:56:96:47:bc
+          dhcp4: false
+          dhcp6: false
+          mtu: 9000
+  vlans:
+       node:
+          id: 4011
+          link: ens192
+          dhcp4: false
+          dhcp6: false
+          addresses: [ 10.101.0.11/16 ]
+          nameservers:
+             addresses: [ 10.195.200.67 ]
+             search: [ ]
+             #routes:
+             # - to: 10.102.0.0/16
+             #   via: 10.101.0.1
+       infra:
+          id: 3967
+          link: ens192
+          dhcp4: true
+          routes:
+             - scope: link
+               to: 224.0.0.0/4
+
+  version: 2
+

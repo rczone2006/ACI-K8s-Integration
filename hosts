@@ -1,0 +1,20 @@
+[vmware]
+aci-k8s-master guest_custom_ip='172.25.74.181' guest_notes='master'
+aci-k8s-node1 guest_custom_ip='172.25.74.182' guest_notes='node1'
+aci-k8s-node2 guest_custom_ip='172.25.74.183' guest_notes='node2'
+
+[network]
+172.25.74.181  node='10.81.0.10' vlan='3011' ip='172.25.74.181'
+172.25.74.182  node='10.81.0.11' vlan='3011' ip='172.25.74.182'
+172.25.74.183  node='10.81.0.12' vlan='3011' ip='172.25.74.183'
+
+[master]
+172.25.74.181
+
+[node]
+172.25.74.182
+172.25.74.183
+
+
+[all:vars]
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o userknownhostsfile=/dev/null'

@@ -1,0 +1,25 @@
+
+# Infrastructure
+# - Defines the vCenter / vSphere environment
+deploy_vsphere_host: '172.25.74.166'
+deploy_vsphere_user: 'administrator@vsphere.local'
+deploy_vsphere_password: 'Ins3965!'
+deploy_vsphere_datacenter: 'DataCenter_Lab'
+deploy_vsphere_folder: '/'
+
+# Guest
+# - Describes virtual machine common options
+guest_network: 'VM Network'
+guest_network_2: 'mykube'
+guest_netmask: '255.255.254.0'
+guest_gateway: '172.25.74.1'
+guest_dns_server: '10.195.200.67'
+guest_domain_name: 'testlab'
+guest_id: 'ubuntu64Guest'
+guest_memory: '1024'
+guest_vcpu: '1'
+guest_template: 'aci-k8s-template'
+vms:
+   - aci-k8s-master  guest-custom-ip='172.25.74.182'
+   - aci-k8s-node1 guest-custom-ip='172.25.74.183'   
+

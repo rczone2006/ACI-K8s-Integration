@@ -1,0 +1,21 @@
+---
+
+- hosts: master
+  gather_facts: false
+  tasks:
+  - name: copy script to local host
+    become: yes
+    copy: 
+      src: /home/labtest/aci-kube/aci-cni.yaml 
+      dest: /home/labtest/aci-cni.yaml
+  - name: apply cni config
+    become: yes
+    command: kubectl apply -f aci-cni.yaml 
+
+  environment:
+    no_proxy: 10.81.0.10,10.82.0.1,10.86.0.1,localhost,172.25.74.160
+    http_proxy: http://proxy.esl.cisco.com:80
+    https_proxy: http://proxy.esl.cisco.com:80
+  handlers:
+    - name: docker status
+      service: name=docker state=started
