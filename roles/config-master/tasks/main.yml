@@ -54,7 +54,7 @@
 
   - name: Log into DockerHub
     docker_login:
-     username: rczone2006
+     username: xxxx
      password: xxxx
 
   #--------------
