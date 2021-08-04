@@ -101,7 +101,7 @@
                                          
   - name: Copy the join command to server location
     copy:
-      src: /home/labtest/aci-kube/join-command
+      src: "{{home_dir_src}}/aci-kube/join-command"
       dest: /tmp/join-command.sh
       mode: 0777 
 
