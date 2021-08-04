@@ -97,7 +97,7 @@
   - name: Initialize the Kubernetes cluster using kubeadm
     become: yes
     shell: 
-        kubeadm init --apiserver-advertise-address=10.81.0.10 --pod-network-cidr=10.82.0.1/16 --service-cidr 10.86.0.1/16 --upload-certs
+        "kubeadm init --apiserver-advertise-address={{ apiserver-advertise-address }} --pod-network-cidr={{ pod-network-cidr }} --service-cidr {{ service-cidr }} --upload-certs"
      
     #-------
   - name: create .kube directory
