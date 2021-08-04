@@ -98,8 +98,7 @@
     become: yes
     shell: 
         kubeadm init --apiserver-advertise-address=10.81.0.10 --pod-network-cidr=10.82.0.1/16 --service-cidr 10.86.0.1/16 --upload-certs
-        # enviroments: 
-        # no_proxy: 10.81.0.10,10.82.0.1,10.86.0.1,localhost
+     
     #-------
   - name: create .kube directory
     become: yes
@@ -112,7 +111,7 @@
   - name: copy admin.conf to user's kube config
     copy:
         src: /etc/kubernetes/admin.conf
-        dest: /home/labtest/.kube/config
+        dest: $HOME/.kube/config
         remote_src: yes
         owner: labtest
      
