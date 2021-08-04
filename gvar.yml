@@ -19,7 +19,5 @@ guest_id: 'ubuntu64Guest'
 guest_memory: '1024'
 guest_vcpu: '1'
 guest_template: 'aci-k8s-template'
-vms:
-   - aci-k8s-master  guest-custom-ip='172.25.74.182'
-   - aci-k8s-node1 guest-custom-ip='172.25.74.183'   
+   
 
