@@ -1,19 +1,15 @@
 - name: Deploy VM from template
   vmware_guest:
-    hostname: '{{ deploy_vsphere_host }}'
-    username: '{{ deploy_vsphere_user }}'
-    password: '{{ deploy_vsphere_password }}'
+    hostname: '{{ vcenter_ip }}'
+    username: '{{ vcenter_user }}'
+    password: '{{ vcenter_password }}'
     validate_certs: no
-    datacenter: '{{ deploy_vsphere_datacenter }}'
-    #cluster: '{{ deploy_vsphere_cluster }}'
-    #resource_pool: '{{ deploy_vsphere_resourcepool }}'
+    datacenter: '{{ deploy_datacenter }}'
     folder: '{{ deploy_vsphere_folder }}'
     name: '{{ inventory_hostname }}'
     state: poweredon
     guest_id: '{{ guest_id }}'
-    #annotation: "{{ guest_notes }}"
-    #disk:
-    # datastore: '{{ deploy_vsphere_datastore }}'
+   
     networks:
     - name: '{{ guest_network }}'
       ip: '{{ guest_custom_ip }}'
@@ -44,4 +40,4 @@
     #poll: 30
   delegate_to: localhost
 - name: pause
-  pause: seconds=30
+  pause: seconds=15
