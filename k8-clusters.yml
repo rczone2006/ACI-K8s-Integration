@@ -87,11 +87,8 @@
   handlers:
     - name: docker status
       service: name=docker state=started
-  environment:
-    no_proxy: 10.81.0.10,10.82.0.1,10.86.0.1,localhost
-    http_proxy: http://proxy.esl.cisco.com:80
-    https_proxy: http://proxy.esl.cisco.com:80
-
+  environment: "{{proxy_env}}"
+   
 #------- apply cni-----       
 - hosts: master
   gather_facts: false
@@ -106,7 +103,5 @@
     become_user: labtest
     command: kubectl apply -f aci-cni.yaml
        
-  environment:
-    no_proxy: 10.81.0.10,10.82.0.1,10.86.0.1,localhost
-    http_proxy: http://proxy.esl.cisco.com:80
-    https_proxy: http://proxy.esl.cisco.com:80
+  environment: "{{proxy_env}}"
+   
