@@ -17,9 +17,14 @@ guest_dns_server: '10.195.200.67'
 guest_domain_name: 'testlab'
 guest_id: 'ubuntu64Guest'
 guest_template: 'aci-k8s-template'
+
+#general
+home_dir_src: '/home/labtest'
+home_dir_dst: '/home/labtest'
 proxy_env:
     no_proxy: 10.81.0.10,10.82.0.1,10.86.0.1,localhost
     http_proxy: http://proxy.esl.cisco.com:80
     https_proxy: http://proxy.esl.cisco.com:80
+ 
    
 
