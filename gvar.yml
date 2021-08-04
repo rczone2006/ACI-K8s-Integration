@@ -1,11 +1,11 @@
 
 # Infrastructure
 # - Defines the vCenter / vSphere environment
-deploy_vsphere_host: '172.25.74.166'
-deploy_vsphere_user: 'administrator@vsphere.local'
-deploy_vsphere_password: 'Ins3965!'
-deploy_vsphere_datacenter: 'DataCenter_Lab'
-deploy_vsphere_folder: '/'
+vcenter_ip: '172.25.74.166'
+vcenter_user: 'administrator@vsphere.local'
+vcenter_password: 'Ins3965!'
+vcenter_datacenter: 'DataCenter_Lab'
+deploy_folder: '/'
 
 # Guest
 # - Describes virtual machine common options
