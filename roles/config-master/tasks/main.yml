@@ -52,8 +52,8 @@
 
   - name: Log into DockerHub
     docker_login:
-     username: xxxx
-     password: xxxx
+     username: "{{ docker_username }}"
+     password: "{{ docker_password }}"
 
   #--------------
   
@@ -119,8 +119,8 @@
     become: yes
     become_user: labtest
     docker_login:
-      username: rczone2006
-      password: ins3965!2      
+      username: "{{ docker_username }}"
+      password: "{{ docker_password }}"   
   #---------------
   - name: Generate join command
     command: kubeadm token create --print-join-command
