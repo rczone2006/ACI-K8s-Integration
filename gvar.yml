@@ -23,6 +23,9 @@ docker_username: 'xxxx'
 docker_password: 'xxxx'
 home_dir_src: '/home/labtest'
 home_dir_dst: '/home/labtest'
+apiserver-advertise-address: '10.81.0.10'
+pod-network-cidr: '10.82.0.1/16'
+service-cidr: '10.86.0.1/16'
 pip_proxy: 'http://proxy.esl.cisco.com:80'
 proxy_env:
     no_proxy: 10.81.0.10,10.82.0.1,10.86.0.1,localhost
