@@ -19,5 +19,9 @@ guest_id: 'ubuntu64Guest'
 guest_memory: '1024'
 guest_vcpu: '1'
 guest_template: 'aci-k8s-template'
+proxy_env:
+    no_proxy: 10.81.0.10,10.82.0.1,10.86.0.1,localhost
+    http_proxy: http://proxy.esl.cisco.com:80
+    https_proxy: http://proxy.esl.cisco.com:80
    
 
