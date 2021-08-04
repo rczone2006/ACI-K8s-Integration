@@ -40,7 +40,7 @@
 
 
   - name: run py script
-    command: /usr/bin/python3 /home/labtest/config-net.py {{ ip }} {{ node }} {{ vlan }} 10 
+    command: "/usr/bin/python3  {{home_dir_dst}}/config-net.py {{ ip }} {{ node }} {{ vlan }} 10"
     register: output
   - set_fact:
           mackey: output.stdout[1:-1] 
@@ -60,7 +60,7 @@
   - name: restart network
     shell: |
             rm -f /etc/netplan/*vmware*
-            cp /home/labtest/interface-template.yml  /etc/netplan/00-installer-config.yaml 
+            cp  {{home_dir_dst}}/interface-template.yml  /etc/netplan/00-installer-config.yaml 
             netplan apply
 
   - name: Wait  for port 22 to become open
