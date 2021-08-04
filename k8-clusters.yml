@@ -31,12 +31,12 @@
   tasks:
   - name: copy script to local host
     copy: 
-      src: /home/labtest/aci-kube/config-net.py 
-      dest: /home/labtest/config-net.py
+      src: "{{home_dir_src}}/aci-kube/config-net.py"
+      dest: "{{home_dir_dst}}/config-net.py"
   - name: copy template  
     copy: 
-      src: /home/labtest/aci-kube/interface-template.yml 
-      dest: /home/labtest/interface-template.yml
+      src: "{{home_dir_src}}/aci-kube/interface-template.yml"
+      dest: "{{home_dir_dst}}/interface-template.yml"
 
 
   - name: run py script
@@ -96,8 +96,8 @@
   - name: copy script to local host
     become: yes
     copy:
-      src: /home/labtest/aci-kube/aci-cni.yaml
-      dest: /home/labtest/aci-cni.yaml
+      src: "{{home_dir_src}}/aci-kube/aci-cni.yaml"
+      dest: "{{home_dir_dst}}/aci-cni.yaml"
   - name: apply cni config
     become: yes
     become_user: labtest
