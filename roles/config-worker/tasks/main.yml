@@ -47,7 +47,7 @@
   - name: install docker-py
     become: yes
     shell: 
-        "pip install --proxy=http://proxy.esl.cisco.com:80 docker-py"
+        "pip install --proxy={{ pip_proxy }} docker-py"
 
   - name: Log into DockerHub
     docker_login:
