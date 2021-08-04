@@ -19,6 +19,8 @@ guest_id: 'ubuntu64Guest'
 guest_template: 'aci-k8s-template'
 
 #general
+docker_username: 'xxxx'
+docker_password: 'xxxx'
 home_dir_src: '/home/labtest'
 home_dir_dst: '/home/labtest'
 proxy_env:
