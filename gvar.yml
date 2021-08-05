@@ -10,7 +10,7 @@ deploy_folder: '/'
 # Guest
 # - Describes virtual machine common options
 guest_network: 'VM Network'
-guest_network_2: 'kubetest'
+guest_network_2: 'kubetest'         # tenant name
 guest_netmask: '255.255.254.0'
 guest_gateway: '172.25.74.1'
 guest_dns_server: '10.195.200.67'
@@ -23,9 +23,9 @@ docker_username: 'rczone2006'
 docker_password: 'ins3965!2'
 home_dir_src: '/home/labtest'
 home_dir_dst: '/home/labtest'
-apiserver: '10.91.0.10'
-pod_network: '10.92.0.1/16'
-service_cidr: '10.96.0.1/16'
+apiserver: '10.91.0.10'            #used by kubeadm init
+pod_network: '10.92.0.1/16'        #used by kubeadm init
+service_cidr: '10.96.0.1/16'       #used by kubeadm init
 pip_proxy: 'http://proxy.esl.cisco.com:80'
 proxy_env:
     no_proxy: 10.91.0.10,10.92.0.1,10.96.0.1,localhost,172.25.74.160

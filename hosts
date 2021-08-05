@@ -1,14 +1,18 @@
+# this group is for deploying vm, the first param is host name, the second is management IP
 [vmware]
-aci-kube-master guest_custom_ip='172.25.74.152' 
+aci-kube-master guest_custom_ip='172.25.74.152'  
 aci-kube-node1 guest_custom_ip='172.25.74.153'
 
+# this group is for configuring network, first param is managment ip, the second is the node ip , third is node vlan
+#the fourth is managemnt ip
 [network]
 172.25.74.152  node='10.91.0.10' vlan='3021' ip='172.25.74.152'
 172.25.74.153  node='10.91.0.11' vlan='3021' ip='172.25.74.153'
 
+# master node management ip
 [master]
 172.25.74.152
-
+# worker node management ip
 [node]
 172.25.74.153
 
