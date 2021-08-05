@@ -24,6 +24,7 @@
   - APT
 #### Step 2. Clone repo to the home directory of the managment station
 #### Step 3. Prepare the acc-provision template file and name the file name as aci-fabric.yaml
+  - Save the aci-fabric.yaml in aci-kube directory
   - ACI Configuration Guide for reference: 
     https://www.cisco.com/c/en/us/td/docs/switches/datacenter/aci/apic/sw/kb/b_Kubernetes_Integration_with_ACI.html
 #### Step 4. Edit params in hosts and gvar.yml files to match up acc-provision template and IP scheme planned
