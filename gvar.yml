@@ -3,7 +3,7 @@
 # - Defines the vCenter / vSphere environment
 vcenter_ip: '172.25.74.166'
 vcenter_user: 'administrator@vsphere.local'
-vcenter_password: 'Ins3965!'
+vcenter_password: 'xxxx'
 vcenter_datacenter: 'DataCenter_Lab'
 deploy_folder: '/'
 
@@ -19,8 +19,8 @@ guest_id: 'ubuntu64Guest'
 guest_template: 'aci-k8s-template'
 
 #general
-docker_username: 'rczone2006'
-docker_password: 'ins3965!2'
+docker_username: 'xxxx'
+docker_password: 'xxxx'
 home_dir_src: '/home/labtest'
 home_dir_dst: '/home/labtest'
 apiserver: '10.91.0.10'
