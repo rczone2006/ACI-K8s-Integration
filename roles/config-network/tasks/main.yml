@@ -1,4 +1,4 @@
-- name: copy script to local host
+  - name: copy script to local host
     copy: 
       src: ~/aci-kube/config-net.py
       dest: '{{home_dir_dst}}/config-net.py'
