@@ -4,7 +4,7 @@
     username: '{{ vcenter_user }}'
     password: '{{ vcenter_password }}'
     validate_certs: no
-    datacenter: '{{ deploy_datacenter }}'
+    datacenter: '{{ vcenter_datacenter }}'
     folder: '{{ deploy_vsphere_folder }}'
     name: '{{ inventory_hostname }}'
     state: poweredon
