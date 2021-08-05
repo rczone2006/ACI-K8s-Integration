@@ -6,6 +6,7 @@
   tasks:
   - name: deploy ACI
     command: 'acc-provision --flavor=kubernetes-1.21 -a -u admin -p ins3965! -c aci-fabric.yaml -o aci-cni.yaml' 
+  environment: "{{proxy_env}}"  
 
 #--------- deploy VMs
 - hosts: vmware
@@ -78,6 +79,7 @@
   handlers:
     - name: docker status
       service: name=docker state=started
+  environment: "{{proxy_env}}"
 - hosts: node
   gather_facts: false
   vars_files:
