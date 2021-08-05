@@ -1,5 +1,5 @@
 # Deploy ACI and Kubernetes Integration
- The script only works for VMware environment, but can be replicated to bare metal with modifications. It's tested on ACI 5.2(1g), Ubuntu 20.04TLS, Kubernetes 1.21, and Vsphere 7.0. Most of the parameters needed in hosts and gvar.yml are self explained after you have a good understanding of acc provision tool.  Proxy environment is a big hassle, if your environment is proxy-free, you need to comment out the lines calling the environment variable defined in gvar.yml from all related scripts. 
+ The script only works for VMware environment. It's tested on ACI 5.2(1g), Ubuntu 20.04TLS, Kubernetes 1.21, and Vsphere 7.0. Most of the parameters needed in hosts and gvar.yml are self explained after you have a good understanding of acc provision tool.  Proxy environment is a big hassle, if your environment is proxy-free, you need to comment out the lines calling the environment variable defined in gvar.yml from all related scripts. 
 
 ## Requirements
 - Python 
