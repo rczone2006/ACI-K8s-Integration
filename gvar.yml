@@ -19,8 +19,8 @@ guest_id: 'ubuntu64Guest'
 guest_template: 'aci-k8s-template'
 
 #general
-docker_username: 'rcozne2006'
-docker_password: 'ins3965!2'
+docker_username: 'xxxx'
+docker_password: 'xxxx'
 home_dir_src: '/home/labtest'
 home_dir_dst: '/home/labtest'
 apiserver-advertise-address: '10.81.0.10'
