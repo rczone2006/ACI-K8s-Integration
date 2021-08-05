@@ -14,6 +14,7 @@
 
 - Install Ubuntu 18.04+
 - Install python3-pip
+- Add a second network adapter pointing to nowhere i.e "dummy"
 - Genenerate and copy public key from management station to VM
   - ssh-keygen -t rsa
   - ssh-copy-id  <VM>
@@ -31,6 +32,8 @@
 #### Step 4. Edit params in hosts and gvar.yml files to match up acc-provision template and IP scheme planned
   
 #### Step 5. Exceution
+      change to aci-kube directory
+      
       ansible-playbook -i hosts --become --become-user=root k8s-cluster.yml
   
 
