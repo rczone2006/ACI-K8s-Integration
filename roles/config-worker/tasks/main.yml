@@ -46,8 +46,7 @@
 
   - name: install docker-py
     become: yes
-    shell: 
-        "pip install --proxy={{ pip_proxy }} docker-py"
+    command: 'pip install --proxy={{ pip_proxy }} docker-py'
 
   - name: Log into DockerHub
     docker_login:
@@ -80,17 +79,23 @@
       state: present
       filename: kubernetes.list
 
-  - name: Install Kubernetes binaries
-    apt:
-      name: "{{ packages }}"
-      state: present
-      update_cache: yes
-    vars:
-      packages:
-        - kubelet
-        - kubeadm
-        - kubectl
-
+      #- name: Install Kubernetes binaries
+      #apt:
+      # name: "{{ packages }}"
+      # state: present
+      # update_cache: yes
+      # vars:
+      # packages:
+      # - kubelet
+      #  - kubeadm
+      #  - kubectl
+  - name: Install kubeadm, kubelet and kubectl 
+    apt: 
+       name: kubelet=1.21.0-00,kubectl=1.21.0-00,kubeadm=1.21.0-00
+       state: present
+    register: apt_res
+    retries: 100
+    until: apt_res is success
   - name: Log into DockerHub
     become: yes
     become_user: labtest
@@ -101,7 +106,7 @@
                                          
   - name: Copy the join command to server location
     copy:
-      src: "{{home_dir_src}}/aci-kube/join-command"
+      src: ~/aci-kube/join-command
       dest: /tmp/join-command.sh
       mode: 0777 
 

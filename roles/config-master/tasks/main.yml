@@ -48,7 +48,7 @@
   - name: install docker-py
     become: yes
     shell: 
-        "pip install --proxy={{ pip_proxy }} docker-py"
+        'pip install --proxy={{ pip_proxy }} docker-py'
 
   - name: Log into DockerHub
     docker_login:
@@ -81,23 +81,29 @@
       state: present
       filename: kubernetes.list
 
-  - name: Install Kubernetes binaries
-    apt:
-      name: "{{ packages }}"
-      state: present
-      update_cache: yes
-    vars:
-      packages:
-        - kubelet
-        - kubeadm
-        - kubectl
-
+      #  - name: Install Kubernetes binaries
+      # apt:
+      # name: "{{ packages }}"
+      #  state: present
+      # update_cache: yes
+      # vars:
+      # packages:
+      #  - kubelet
+      #  - kubeadm
+      #  - kubectl
+  - name: Install kubeadm, kubelet and kubectl 
+    apt: 
+     name: kubelet=1.21.0-00,kubectl=1.21.0-00,kubeadm=1.21.0-00
+     state: present
+    register: apt_res
+    retries: 100
+    until: apt_res is success
 
       #---- initilize#---- initilize#---- initilize   
   - name: Initialize the Kubernetes cluster using kubeadm
     become: yes
-    shell: 
-        "kubeadm init --apiserver-advertise-address={{ apiserver-advertise-address }} --pod-network-cidr={{ pod-network-cidr }} --service-cidr {{ service-cidr }} --upload-certs"
+    shell:
+        kubeadm init --apiserver-advertise-address='{{apiserver}}'  --pod-network-cidr='{{pod_network}}'  --service-cidr '{{ service_cidr }}' --upload-certs
      
     #-------
   - name: create .kube directory
@@ -111,7 +117,7 @@
   - name: copy admin.conf to user's kube config
     copy:
         src: /etc/kubernetes/admin.conf
-        dest: $HOME/.kube/config
+        dest: '{{home_dir_dst}}/.kube/config'
         remote_src: yes
         owner: labtest
      

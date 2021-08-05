@@ -10,7 +10,7 @@ deploy_folder: '/'
 # Guest
 # - Describes virtual machine common options
 guest_network: 'VM Network'
-guest_network_2: 'mykube'
+guest_network_2: 'kubetest'
 guest_netmask: '255.255.254.0'
 guest_gateway: '172.25.74.1'
 guest_dns_server: '10.195.200.67'
@@ -19,16 +19,16 @@ guest_id: 'ubuntu64Guest'
 guest_template: 'aci-k8s-template'
 
 #general
-docker_username: 'xxxx'
-docker_password: 'xxxx'
+docker_username: 'rczone2006'
+docker_password: 'ins3965!2'
 home_dir_src: '/home/labtest'
 home_dir_dst: '/home/labtest'
-apiserver-advertise-address: '10.81.0.10'
-pod-network-cidr: '10.82.0.1/16'
-service-cidr: '10.86.0.1/16'
+apiserver: '10.91.0.10'
+pod_network: '10.92.0.1/16'
+service_cidr: '10.96.0.1/16'
 pip_proxy: 'http://proxy.esl.cisco.com:80'
 proxy_env:
-    no_proxy: 10.81.0.10,10.82.0.1,10.86.0.1,localhost
+    no_proxy: 10.91.0.10,10.92.0.1,10.96.0.1,localhost,172.25.74.160
     http_proxy: http://proxy.esl.cisco.com:80
     https_proxy: http://proxy.esl.cisco.com:80
  

@@ -1,19 +1,16 @@
 [vmware]
-aci-k8s-master guest_custom_ip='172.25.74.181' 
-aci-k8s-node1 guest_custom_ip='172.25.74.182'
-aci-k8s-node2 guest_custom_ip='172.25.74.183' 
+aci-kube-master guest_custom_ip='172.25.74.152' 
+aci-kube-node1 guest_custom_ip='172.25.74.153'
 
 [network]
-172.25.74.181  node='10.81.0.10' vlan='3011' ip='172.25.74.181'
-172.25.74.182  node='10.81.0.11' vlan='3011' ip='172.25.74.182'
-172.25.74.183  node='10.81.0.12' vlan='3011' ip='172.25.74.183'
+172.25.74.152  node='10.91.0.10' vlan='3021' ip='172.25.74.152'
+172.25.74.153  node='10.91.0.11' vlan='3021' ip='172.25.74.153'
 
 [master]
-172.25.74.181
+172.25.74.152
 
 [node]
-172.25.74.182
-172.25.74.183
+172.25.74.153
 
 
 [all:vars]
