@@ -1,0 +1,39 @@
+- name: copy script to local host
+    copy: 
+      src: ~/aci-kube/config-net.py
+      dest: '{{home_dir_dst}}/config-net.py'
+  - name: copy template  
+    copy: 
+      src: ~/aci-kube/interface-template.yml
+      dest: '{{home_dir_dst}}/interface-template.yml'
+
+
+  - name: run py script
+    command: /usr/bin/python3  {{home_dir_dst}}/config-net.py {{ ip }} {{ node }} {{ vlan }} 10
+    register: output
+  - set_fact:
+          mackey: output.stdout[1:-1] 
+  - debug: 
+        var: output.stdout
+
+  - name: modify dhcp.conf
+    lineinfile:
+         backup: no
+         backrefs: yes
+         state: present
+         path: '/etc/dhcp/dhclient.conf'
+         regexp: '^(\s*)[#]?{{ item.search }}(: )*'
+         line: '\1{{ item.replace }}'
+    with_items:
+         - { search: 'send dhcp-client-identifier', replace: 'send dhcp-client-identifier 01:{{ output.stdout }}' }  
+  - name: restart network
+    shell: |
+            rm -f /etc/netplan/*vmware*
+            cp  '{{home_dir_dst}}/interface-template.yml'  /etc/netplan/00-installer-config.yaml 
+            netplan apply
+
+  - name: Wait  for port 22 to become open
+    wait_for:
+      port: 22
+      delay: 5
+    connection: local

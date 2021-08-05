@@ -1,0 +1,76 @@
+---
+- hosts: localhost
+  gather_facts: false
+  vars_files:
+    - gvar.yml
+  tasks:
+  - name: deploy ACI
+    command: 'acc-provision --flavor=kubernetes-1.21 -a -u admin -p ins3965! -c aci-fabric.yaml -o aci-cni.yaml' 
+  environment: "{{proxy_env}}"  
+
+#--------- deploy VMs
+- hosts: vmware
+  serial: 1
+  gather_facts: false
+  vars_files:
+    - gvar.yml
+  roles:
+     - deploy-vm
+
+  tasks:
+  - name: Wait  for port 22 to become open
+    wait_for:
+      port: 22
+      host: '{{ guest_custom_ip }}'
+      delay: 10
+    connection: local
+
+
+ #------- perpare nodes network
+- hosts: network
+  gather_facts: false
+  vars_files:
+     - gvar.yml
+  roles:
+     - config-network
+  
+
+- hosts: master
+  gather_facts: false
+  vars_files:
+    - gvar.yml
+  roles:
+     - config-master
+  handlers:
+    - name: docker status
+      service: name=docker state=started
+  environment: "{{proxy_env}}"
+- hosts: node
+  gather_facts: false
+  vars_files:
+    - gvar.yml
+  roles:
+     - config-worker
+  handlers:
+    - name: docker status
+      service: name=docker state=started
+  environment: "{{proxy_env}}"
+   
+#------- apply cni-----       
+- hosts: master
+  gather_facts: false
+  vars_files:
+    - gvar.yml
+  tasks:
+  - name: copy script to local host
+    become: yes
+    copy:
+      src: ~/aci-kube/aci-cni.yaml
+      dest: '{{home_dir_dst}}/aci-cni.yaml'
+  - name: apply cni config
+    become: yes
+    become_user: labtest
+    command: kubectl apply -f aci-cni.yaml
+       
+  environment: "{{proxy_env}}"
+   
